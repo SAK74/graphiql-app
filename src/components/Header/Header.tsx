@@ -12,7 +12,6 @@ export default function Header() {
 
   const [className, setClassName] = useState<string>(WHITE_HEADER);
   const [user] = useAuthState(auth);
-  console.log({ user });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,19 +43,12 @@ export default function Header() {
             <button className="hover:opacity-50 focus:text-regular-blue">EN</button>
             <button className="hover:opacity-60 focus:text-regular-blue">RU</button>
           </div>
-          {user === null ? (
-            <>
-              <NavLink to="/sign-in">
-                <button className="py-2 px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md">
-                  Sign In
-                </button>
-              </NavLink>
-              <NavLink to="/sign-up">
-                <button className="py-2 px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md">
-                  Sign Up
-                </button>
-              </NavLink>
-            </>
+          {!user ? (
+            <NavLink to="/sign-in">
+              <button className="py-2 px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md">
+                Sign In / Sign Up
+              </button>
+            </NavLink>
           ) : (
             <SignOutButton onClick={handleSignOut} />
           )}

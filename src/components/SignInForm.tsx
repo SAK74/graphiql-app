@@ -9,7 +9,6 @@ const SignInForm = () => {
   const [password, setPassword] = useState('');
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-  console.log({ user });
 
   useEffect(() => {
     if (user) {
@@ -18,13 +17,11 @@ const SignInForm = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+
   const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password);
   };
-
-  console.log(user?.uid);
-  console.log(user);
 
   return (
     <div className="flex items-center justify-center mt-20">

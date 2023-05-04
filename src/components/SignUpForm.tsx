@@ -21,18 +21,27 @@ const SignUpForm = () => {
 
   const validatePassword = () => {
     let isValid = true;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
     if (password !== '' && confirmPassword !== '' && password !== confirmPassword) {
       isValid = false;
+      setErrorMessage('Passwords does not match');
+    } else if (!passwordRegex.test(password)) {
+      isValid = false;
+      setErrorMessage(
+        'Invalid password. Password should contain minimum 8 symbols, at least one letter, one digit and one special character'
+      );
     }
+
     return isValid;
   };
 
   const register = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validatePassword()) {
-      setErrorMessage('Passwords does not match');
       return;
     }
+    setErrorMessage('');
     try {
       await createUserWithEmailAndPassword(auth, email, password);
     } catch (e: unknown) {
