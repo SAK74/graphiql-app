@@ -3,11 +3,16 @@ import Logo from '../../assets/Logo.svg';
 import { NavLink } from 'react-router-dom';
 import SignOutButton from './SignOutButton';
 import { WHITE_HEADER, GRAY_HEADER } from '../../constants/constants';
+import { auth } from '../../firebase';
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Header() {
   const headerRef = createRef<HTMLDivElement>();
 
   const [className, setClassName] = useState<string>(WHITE_HEADER);
+  const [user] = useAuthState(auth);
+  console.log({ user });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +29,10 @@ export default function Header() {
     };
   }, []);
 
+  const handleSignOut = () => {
+    signOut(auth);
+  };
+
   return (
     <header ref={headerRef} className={className}>
       <nav className="flex sticky justify-between mx-w-screen-xl">
@@ -35,7 +44,22 @@ export default function Header() {
             <button className="hover:opacity-50 focus:text-regular-blue">EN</button>
             <button className="hover:opacity-60 focus:text-regular-blue">RU</button>
           </div>
-          <SignOutButton />
+          {user === null ? (
+            <>
+              <NavLink to="/sign-in">
+                <button className="py-2 px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md">
+                  Sign In
+                </button>
+              </NavLink>
+              <NavLink to="/sign-up">
+                <button className="py-2 px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md">
+                  Sign Up
+                </button>
+              </NavLink>
+            </>
+          ) : (
+            <SignOutButton onClick={handleSignOut} />
+          )}
         </div>
       </nav>
     </header>

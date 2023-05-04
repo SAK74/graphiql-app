@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, redirect } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -10,12 +10,13 @@ const SignUpForm = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [user, loading, error] = useAuthState(auth);
-
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
   useEffect(() => {
     if (user) {
-      redirect('/');
+      navigate('/');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const validatePassword = () => {
@@ -120,7 +121,7 @@ const SignUpForm = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
-
+            {errorMessage && <div className="text-red-600">{errorMessage}</div>}
             <button
               type="submit"
               className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"

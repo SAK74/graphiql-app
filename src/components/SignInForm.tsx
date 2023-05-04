@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from '@firebase/auth';
@@ -7,13 +7,20 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 const SignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, loading, error] = useAuthState(auth);
-
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  console.log({ user });
+
+  useEffect(() => {
+    if (user) {
+      debugger;
+      navigate('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
   const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password);
-    localStorage.setItem('uid', `${user?.uid}`);
   };
 
   console.log(user?.uid);
@@ -64,7 +71,7 @@ const SignInForm = () => {
 
             <button
               type="submit"
-              className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
               Sign in
             </button>
