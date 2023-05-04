@@ -7,7 +7,7 @@ import SignInForm from './components/SignInForm';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<SignInForm />}></Route>
+      <Route path="/sign-in" element={<SignInForm />}></Route>
       <Route path="/sign-up" element={<SignUpForm />} />
     </Routes>
   );
