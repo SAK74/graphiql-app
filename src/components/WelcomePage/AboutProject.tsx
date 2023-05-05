@@ -3,9 +3,9 @@ import { techs } from '../../constants/constants';
 
 export default function AboutProject() {
   return (
-    <section className="flex justify-between flex-col p-6 pt-18">
+    <section className="flex justify-between flex-col p-x-6 my-16">
       <h2 className="text-3xl md:text-4xl pb-6 font-mono text-dark-blue">About Project</h2>
-      <p className="text-xl">
+      <p className="text-xl leading-8">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
         laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
