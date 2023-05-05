@@ -36,17 +36,24 @@ export default function Header() {
         <NavLink to="/">
           <img className="h-16" src={Logo} />
         </NavLink>
-        <div className="flex gap-10 justify-between items-center">
-          <div className="gap-5 flex">
+        <div className="flex gap-3 justify-between items-center">
+          <div className="gap-3 mr-8 flex">
             <button className="hover:opacity-50 focus:text-regular-blue">EN</button>
             <button className="hover:opacity-60 focus:text-regular-blue">RU</button>
           </div>
           {!user ? (
-            <NavLink to="/sign-in">
-              <button className="py-2 px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md">
-                Sign In / Sign Up
-              </button>
-            </NavLink>
+            <>
+              <NavLink to="/sign-in">
+                <button className="py-2 px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md">
+                  Sign In
+                </button>
+              </NavLink>
+              <NavLink to="/sign-up">
+                <button className="py-2 px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md">
+                  Sign Up
+                </button>
+              </NavLink>
+            </>
           ) : (
             <SignOutButton onClick={handleSignOut} />
           )}
