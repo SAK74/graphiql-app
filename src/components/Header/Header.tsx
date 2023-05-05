@@ -1,13 +1,11 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '../../assets/Logo.svg';
 import { NavLink } from 'react-router-dom';
 import SignOutButton from './SignOutButton';
 import { WHITE_HEADER, GRAY_HEADER } from '../../constants/constants';
 
 export default function Header() {
-  const headerRef = createRef<HTMLDivElement>();
-
-  const [className, setClassName] = useState<string>(WHITE_HEADER);
+  const [className, setClassName] = useState<string>(GRAY_HEADER);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,8 +23,8 @@ export default function Header() {
   }, []);
 
   return (
-    <header ref={headerRef} className={className}>
-      <nav className="flex sticky justify-between mx-w-screen-xl">
+    <header className={className}>
+      <nav className="flex justify-between mx-w-screen-xl">
         <NavLink to="/">
           <img className="h-16" src={Logo} />
         </NavLink>
