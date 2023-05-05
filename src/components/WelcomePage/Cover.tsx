@@ -7,7 +7,7 @@ export default function Cover() {
     <div className="flex justify-between flex-col p-6 items-center md:flex-row md:pt-0">
       <div className="flex gap-4 flex-col">
         <h1 className="text-4xl md:text-6xl font-mono">GraphiQL Project</h1>
-        <p className="text-xl text-dark-blue">
+        <p className="text-2xl text-dark-blue">
           A playground/IDE for graphQL requests, final project for RSS React 2023 Q1 course
         </p>
         <a
