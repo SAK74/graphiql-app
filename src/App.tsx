@@ -6,6 +6,7 @@ import MainPage from './components/MainPage';
 import SignInForm from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
 import { Footer } from './components/footer';
+import { NotFound } from 'components/NotFound';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/sign-in" element={<SignInForm />}></Route>
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/" element={<MainPage />}></Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
