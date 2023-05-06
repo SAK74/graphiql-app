@@ -11,7 +11,7 @@ export const Footer = () => {
         <img
           src="https://rs.school/images/rs_school_js.svg"
           alt="logo"
-          className="w-32 hover:scale-110"
+          className="w-32 hover:scale-110 duration-300 max-md:w-24"
         />
       </a>
       <div className="space-x-2">
