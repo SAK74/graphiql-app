@@ -8,7 +8,10 @@ const DevCard: FC<Dev> = (props: Dev) => {
 
   return (
     <div className="flex flex-col items-center gap-6 border-2 border-light-gray shadow-md p-4 rounded-2xl">
-      <img className="w-64 h-50 self-center rounded max-w-full align-middle" src={pic}></img>
+      <div
+        className="rounded-xl h-80 w-64 bg- bg-center bg-cover"
+        style={{ backgroundImage: `url(${pic})` }}
+      ></div>
       <h3 className="font-semibold text-2xl text-center">{name}</h3>
       <a
         className="text-lg hover:opacity-50 flex items-center"
@@ -34,3 +37,5 @@ const DevCard: FC<Dev> = (props: Dev) => {
 };
 
 export default DevCard;
+
+//  <img className="w-80 h-3/5 self-center rounded max-w-full align-middle" src={pic}></img>

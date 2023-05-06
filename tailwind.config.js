@@ -11,6 +11,11 @@ module.exports = {
         white: 'rgb(255 255 255)',
         black: 'black',
       },
+      backgroundImage: {
+        Anastasiia: "url('./assets/Anastasia.jpg')",
+        Anna: "url('/assets/Anna.jpeg')",
+        Sergij: "url('/assets/Sergij.jpeg')",
+      },
     },
   },
   plugins: [],

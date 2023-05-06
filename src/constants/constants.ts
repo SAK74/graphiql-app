@@ -4,7 +4,7 @@ export const GRAY_HEADER = 'w-full m-0 bg-light-gray m-0 pt-3 box px-24 max-md:p
 
 import AnastasiaPic from '../assets/Anastasia.jpg';
 import AnnaPic from '../assets/Anna.jpeg';
-import GenericPic from '../assets/ApiPic.svg';
+import SergijPic from '../assets/Sergij.jpeg';
 import { Dev } from '../types/types';
 
 export const techs = ['React.js', 'GraphQL', 'Tailwind CSS', 'Firebase'];
@@ -26,7 +26,7 @@ export const devs: Dev[] = [
   },
   {
     name: 'Sergij Kusyy',
-    pic: GenericPic,
+    pic: SergijPic,
     gh: 'https://github.com/sak74',
     ln: 'https://www.linkedin.com/in/serhiy-kusyy/',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
