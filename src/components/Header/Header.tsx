@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Logo from '../../assets/Logo.svg';
 import { NavLink } from 'react-router-dom';
 import SignOutButton from './SignOutButton';
-import { WHITE_HEADER, GRAY_HEADER } from '../../constants/constants';
+import { WHITE_HEADER, GRAY_HEADER } from '../../_constants/constants';
 import { auth } from '../../firebase';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';

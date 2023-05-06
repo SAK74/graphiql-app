@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import MainPage from './components/MainPage';
 import SignInForm from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
+import { Footer } from './components/footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/" element={<MainPage />}></Route>
       </Routes>
+      <Footer />
     </>
   );
 }
