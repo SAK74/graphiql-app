@@ -7,20 +7,24 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 const SignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
-      debugger;
       navigate('/');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      setError('Something went wrong! Check your email and password and try again!');
+    }
   };
 
   return (
@@ -30,7 +34,7 @@ const SignInForm = () => {
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
             Sign in to your account
           </h1>
-          <form className="space-y-4 md:space-y-6 " action="#" onSubmit={onLogin}>
+          <form className="space-y-4 md:space-y-6 " action="#" onSubmit={handleSignIn}>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">
                 Your email
@@ -59,7 +63,7 @@ const SignInForm = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
               />
             </div>
-
+            {error && <div className="text-red-600">{error}</div>}
             <button
               type="submit"
               className="w-full text-white  bg-dark-blue hover:bg-light-blue hover:text-black focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"

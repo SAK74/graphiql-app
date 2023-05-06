@@ -46,7 +46,7 @@ const SignUpForm = () => {
       await createUserWithEmailAndPassword(auth, email, password);
     } catch (e: unknown) {
       console.error(e);
-      setErrorMessage('Sign up error. try again');
+      setErrorMessage('Sign up error. Try again');
       return;
     }
     setEmail('');
@@ -55,11 +55,11 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="flex items-center justify-center mt-20">
-      <div className="w-full  bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+    <div className="flex items-center justify-center mt-10">
+      <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-            Create and account
+            Create an account
           </h1>
           <form className="space-y-4 md:space-y-6 " action="#" onSubmit={register}>
             <div>
