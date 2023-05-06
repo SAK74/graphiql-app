@@ -9,7 +9,7 @@ const DevCard: FC<Dev> = (props: Dev) => {
   return (
     <div className="flex flex-col items-center gap-6 border-2 border-light-gray shadow-md p-4 rounded-2xl">
       <div
-        className="rounded-xl h-80 w-64 bg- bg-center bg-cover"
+        className="rounded-xl h-80 w-full bg-center bg-contain bg-no-repeat"
         style={{ backgroundImage: `url(${pic})` }}
       ></div>
       <h3 className="font-semibold text-2xl text-center">{name}</h3>
