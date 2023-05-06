@@ -4,7 +4,7 @@ import { devs } from '../../constants/constants';
 
 export default function CardList() {
   return (
-    <div className="flex flex-col gap-8 mt-4 md:flex-row">
+    <div className="grid grid-cols-1 gap-8 mt-4 md:grid-cols-3">
       {devs.map((item, index) => {
         return (
           <DevCard
