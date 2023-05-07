@@ -14,7 +14,7 @@ export const Footer = () => {
           className="w-32 hover:scale-110 duration-300 max-md:w-24"
         />
       </a>
-      <div className="space-x-2">
+      <div className="space-x-2 inline-flex">
         {authors.map((author) => (
           <Author key={author.gh_link} {...author} />
         ))}
