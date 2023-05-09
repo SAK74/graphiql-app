@@ -1,6 +1,6 @@
 import React from 'react';
 import DevCard from './DevCard';
-import { devs } from '../../constants/constants';
+import { devs } from '_constants/constants';
 
 export default function CardList() {
   return (

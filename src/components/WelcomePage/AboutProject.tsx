@@ -1,5 +1,5 @@
 import React from 'react';
-import { techs } from '../../constants/constants';
+import { techs } from '_constants/constants';
 
 export default function AboutProject() {
   return (

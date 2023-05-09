@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import { Route, Routes } from 'react-router-dom';
@@ -6,6 +5,8 @@ import MainPage from './components/MainPage';
 import SignInForm from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
 import WelcomePage from './components/WelcomePage/WelcomePage';
+import { Footer } from './components/footer';
+import { NotFound } from 'components/NotFound';
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/main" element={<MainPage />}></Route>
         <Route path="/" element={<WelcomePage />}></Route>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </>
   );
 }
