@@ -12,14 +12,16 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/sign-in" element={<SignInForm />}></Route>
-        <Route path="/sign-up" element={<SignUpForm />} />
-        <Route path="/main" element={<MainPage />}></Route>
-        <Route path="/" element={<WelcomePage />}></Route>
-        <Route path="/" element={<MainPage />}></Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <main className="flex flex-col min-h-[calc(100vh_-_140px)]">
+        <Routes>
+          <Route path="/sign-in" element={<SignInForm />}></Route>
+          <Route path="/sign-up" element={<SignUpForm />} />
+          <Route path="/main" element={<MainPage />}></Route>
+          <Route path="/" element={<WelcomePage />}></Route>
+          <Route path="/" element={<MainPage />}></Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
       <Footer />
     </>
   );
