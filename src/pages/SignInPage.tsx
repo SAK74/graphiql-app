@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-const SignInForm = () => {
+const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -83,4 +83,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignInPage;

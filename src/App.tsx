@@ -1,25 +1,26 @@
 import './App.css';
 import Header from './components/Header/Header';
 import { Route, Routes } from 'react-router-dom';
-import MainPage from './components/MainPage';
-import SignInForm from './components/SignInForm';
-import SignUpForm from './components/SignUpForm';
-import WelcomePage from './components/WelcomePage/WelcomePage';
+import MainPage from './pages/MainPage';
+import SignInForm from './pages/SignInPage';
+import SignUpForm from './pages/SignUpPage';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 import { Footer } from './components/footer';
-import { NotFound } from 'components/NotFound';
+import { NotFound } from './pages/NotFound';
 
 function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/sign-in" element={<SignInForm />}></Route>
-        <Route path="/sign-up" element={<SignUpForm />} />
-        <Route path="/main" element={<MainPage />}></Route>
-        <Route path="/" element={<WelcomePage />}></Route>
-        <Route path="/" element={<MainPage />}></Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <main className="flex flex-col min-h-[calc(100vh_-_136px)]">
+        <Routes>
+          <Route path="/sign-in" element={<SignInForm />}></Route>
+          <Route path="/sign-up" element={<SignUpForm />} />
+          <Route path="/main" element={<MainPage />}></Route>
+          <Route path="/" element={<WelcomePage />}></Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
       <Footer />
     </>
   );

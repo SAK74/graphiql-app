@@ -3,7 +3,7 @@ import { GRAY_HEADER } from '_constants/constants';
 import { Author } from './Author';
 
 const FOOTER = GRAY_HEADER.replace('box', 'flex').concat(
-  ' pb-2 justify-between items-center fixed bottom-0'
+  'pb-2 justify-between items-center mt-auto bottom-0'
 );
 
 export const Footer = () => {
