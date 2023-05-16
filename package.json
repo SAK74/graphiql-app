@@ -6,6 +6,7 @@
     "@codemirror/lang-sql": "^6.4.1",
     "@graphql-tools/executor-http": "^0.1.10",
     "@graphql-tools/wrap": "^9.4.2",
+    "@apollo/client": "^3.7.14",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
