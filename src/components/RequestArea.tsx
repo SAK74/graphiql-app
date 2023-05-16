@@ -6,7 +6,7 @@ import { buildHTTPExecutor } from '@graphql-tools/executor-http';
 import { schemaFromExecutor } from '@graphql-tools/wrap';
 import clsx from 'clsx';
 
-const DEFAULT_QUERY = `query Character($characterId: ID!) {
+export const DEFAULT_QUERY = `query Character($characterId: ID!) {
   character(id: $characterId) {
     gender
     id

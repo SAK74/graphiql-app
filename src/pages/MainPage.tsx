@@ -1,32 +1,12 @@
-import React from 'react';
+import RequestArea, { DEFAULT_QUERY } from 'components/RequestArea';
+import React, { useState } from 'react';
 
 export default function MainPage() {
+  const [value, setValue] = useState(DEFAULT_QUERY);
+
   return (
-    <div className="">
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
-      <div className="w-100 bg-blue">New</div>
+    <div>
+      <RequestArea value={value} onChange={() => setValue(value)} />
     </div>
   );
 }
