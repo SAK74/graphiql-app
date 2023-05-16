@@ -5,6 +5,7 @@ import { ResponseComponent } from 'components/main/Response';
 import { Dispatch, SetStateAction, createContext, useState, useContext } from 'react';
 import RequestArea, { DEFAULT_QUERY } from 'components/RequestArea';
 import '../components/main/temp.css'; //template
+import { VariablesBlock } from 'components/main/Variables';
 
 const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql',
@@ -66,6 +67,5 @@ export default function MainPage() {
         </Ctx.Provider>
       </ApolloProvider>
     </>
-
   );
 }
