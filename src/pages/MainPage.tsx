@@ -1,12 +1,12 @@
 import RequestArea, { DEFAULT_QUERY } from 'components/RequestArea';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function MainPage() {
   const [value, setValue] = useState(DEFAULT_QUERY);
-
+  console.log(value);
   return (
     <div>
-      <RequestArea value={value} onChange={() => setValue(value)} />
+      <RequestArea value={value} onChange={(val) => setValue(val)} />
     </div>
   );
 }
