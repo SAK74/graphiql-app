@@ -3,7 +3,7 @@ import { GRAY_HEADER } from '_constants/constants';
 import { Author } from './Author';
 
 const FOOTER = GRAY_HEADER.replace('box', 'flex').concat(
-  'pb-2 justify-between items-center mt-auto bottom-0'
+  'pb-2 justify-between items-center bottom-0'
 );
 
 export const Footer = () => {
@@ -21,7 +21,7 @@ export const Footer = () => {
           <Author key={author.gh_link} {...author} />
         ))}
       </div>
-      <div className="font-bold text-lg">© 2023</div>
+      <div className="font-semibold text-lg">© 2023</div>
     </footer>
   );
 };
