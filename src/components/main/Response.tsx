@@ -1,6 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
 import { useQueryContext } from 'pages/MainPage';
 import { FC } from 'react';
+import ReactJson from 'react-json-view';
 
 const RickResponse: FC<{ query: string }> = ({ query }) => {
   const {
@@ -31,7 +32,9 @@ const RickResponse: FC<{ query: string }> = ({ query }) => {
   ) : error ? (
     <div>{JSON.stringify(error, null, 2)}</div>
   ) : (
-    <div>{JSON.stringify(data, null, 2)}</div>
+    <div>
+      <ReactJson src={data} />
+    </div>
   );
   return <>{content}</>;
 };
