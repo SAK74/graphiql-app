@@ -41,6 +41,14 @@ export default function Header() {
             <button className="hover:opacity-50 focus:text-regular-blue">EN</button>
             <button className="hover:opacity-60 focus:text-regular-blue">RU</button>
           </div>
+          {user && (
+            <NavLink
+              className={({ isActive }) => (isActive ? 'text-regular-blue' : 'text-black')}
+              to="/main"
+            >
+              <div className="text-lg p-2 hover:text-regular-blue">Main page</div>
+            </NavLink>
+          )}
           {!user ? (
             <>
               <NavLink to="/sign-in">
