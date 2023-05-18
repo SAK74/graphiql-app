@@ -50,7 +50,7 @@ export default function MainPage() {
     <>
       <ApolloProvider client={client}>
         <Ctx.Provider value={{ query, setQuery, variables, setVariables, request }}>
-          <div className="grid gap-10 grid-cols-1 mt-2 md:grid-cols-[20%,1fr,1fr]">
+          <div className="grid gap-10 grid-cols-1 mt-6 md:grid-cols-[20%,1fr,1fr]">
             <Docs />
             <div>
               <div className="rounded-t-lg shadow-md p-4">
