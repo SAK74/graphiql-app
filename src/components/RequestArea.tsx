@@ -5,30 +5,16 @@ import { useEffect, useState } from 'react';
 import { buildHTTPExecutor } from '@graphql-tools/executor-http';
 import { schemaFromExecutor } from '@graphql-tools/wrap';
 import clsx from 'clsx';
+import { useQueryContext } from 'pages/MainPage';
+import { API_URL } from '_constants/apiUrl';
 
-export const DEFAULT_QUERY = `query Character($characterId: ID!) {
-  character(id: $characterId) {
-    gender
-    id
-    image
-  }
-}`;
-const RequestArea = ({
-  className,
-  value,
-  onChange,
-}: {
-  className?: string;
-  value: string;
-  onChange: (v: string) => void;
-}) => {
+const RequestArea = ({ className }: { className?: string }) => {
   const [graphQLSchema, setGraphQLSchema] = useState<GraphQLSchema>();
-
-  const url = 'https://rickandmortyapi.com/graphql';
+  const { query, setQuery } = useQueryContext();
   useEffect(() => {
     const fetchSchema = async () => {
       const remoteExecutor = buildHTTPExecutor({
-        endpoint: url,
+        endpoint: API_URL,
       });
       const schema = await schemaFromExecutor(remoteExecutor);
       setGraphQLSchema(schema);
@@ -41,10 +27,9 @@ const RequestArea = ({
       {graphQLSchema && (
         <CodeMirror
           className={clsx(className)}
-          value={value}
-          onChange={onChange}
+          value={query}
+          onChange={setQuery}
           extensions={[graphql(graphQLSchema)]}
-          height="300px"
           theme="light"
         />
       )}

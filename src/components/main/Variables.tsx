@@ -5,8 +5,8 @@ export const VariablesBlock = () => {
   const { setVariables } = useQueryContext();
   const [opened, setOpened] = useState<boolean>(false);
   return (
-    <div className="variables">
-      <p>Variables</p>
+    <div className="rounded-b-lg shadow-md p-4">
+      <p className="text-lg font-semibold p-2">Variables</p>
       <div
         className="arrow"
         onClick={() => {
