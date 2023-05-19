@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { buildHTTPExecutor } from '@graphql-tools/executor-http';
 import { schemaFromExecutor } from '@graphql-tools/wrap';
 import clsx from 'clsx';
-import { useQueryContext } from 'pages/MainPage';
+import { useQueryContext } from './QueryProvider';
 import { API_URL } from '_constants/apiUrl';
 
 const RequestArea = ({ className }: { className?: string }) => {
