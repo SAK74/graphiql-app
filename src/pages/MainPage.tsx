@@ -9,6 +9,7 @@ import DEFAULT_QUERY from '_constants/defaultQuery';
 import { auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const client = new ApolloClient({
   uri: API_URL,
@@ -46,6 +47,7 @@ export default function MainPage() {
   const [request, setRequest] = useState<RequestType>({});
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!user) {
@@ -67,12 +69,12 @@ export default function MainPage() {
             <div>
               <div className="rounded-t-lg shadow-md p-4">
                 <div className="flex justify-between">
-                  <p className="text-lg font-semibold p-2">Request</p>
+                  <p className="text-lg font-semibold p-2">{t('mainPage.request')}</p>
                   <button
                     onClick={runRequest}
                     className="py-2 px-3 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md"
                   >
-                    Run
+                    {t('mainPage.button')}
                   </button>
                 </div>
                 <RequestArea />

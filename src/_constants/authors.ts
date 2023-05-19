@@ -1,14 +1,14 @@
 export const authors = [
   {
-    name: 'Anastasiia Uferova',
+    name: 'Anastasiia Iuferova',
     gh_link: 'https://github.com/AnastasiiaUferova',
   },
   {
-    name: 'Anna Biruk',
+    name: 'Hanna Biruk',
     gh_link: 'https://github.com/anna-biruk',
   },
   {
-    name: 'Serhiy Kusyy',
+    name: 'Sergij Kusyy',
     gh_link: 'https://github.com/SAK74',
   },
 ];
