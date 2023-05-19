@@ -8,9 +8,8 @@ interface ContextType {
   request: RequestType;
   runRequest: () => void;
 }
-export interface VarsType {
-  id: string;
-}
+export type VarsType = Record<string, string>;
+
 export interface RequestType {
   query?: string;
   variables?: VarsType;
