@@ -1,0 +1,63 @@
+{
+    "header": {
+        "mainPage": "Main page",
+        "signIn": "Sign In",
+        "signUp": "Sign Up",
+        "signOut": "Sign Out",
+        "ru": "RU",
+        "en": "EN"
+    },
+    "welcomePage": {
+        "cover": {
+            "title": "GraphiQL Project",
+            "description": "A playground/IDE for graphQL requests, final project for RSS React 2023 Q1 course",
+            "github": "Github Repo"
+        },
+        "about": {
+            "title": "About Project"
+        },
+        "developers": {
+            "title": "Developers",
+            "devs": {
+                "Anastasiia Iuferova": "Anastasiia Iuferova",
+                "Hanna Biruk": "Hanna Biruk",
+                "Sergij Kusyy": "Sergij Kusyy"
+            }
+        }
+    },
+    "mainPage": {
+        "request": "Request",
+        "button": "Run",
+        "documents": "Documents",
+        "variables": "Variables",
+        "response": "Response"
+    },
+    "footer": {
+        "devs": {
+            "Anastasiia Iuferova": "Anastasiia Iuferova",
+            "Hanna Biruk": "Hanna Biruk",
+            "Sergij Kusyy": "Sergij Kusyy"
+        }
+    },
+    "signIn": {
+        "title": "Sign in to your account",
+        "email": "Your email",
+        "password": "Password",
+        "button": "Sign in",
+        "dontHaveAccount": "Don’t have an account yet?",
+        "register": "Register",
+        "error": "Something went wrong! Check your email and password and try again!"
+    },
+    "signUp": {
+        "title": "Create an account",
+        "name": "Your Full Name",
+        "email": "Your email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "button": "Create an account",
+        "haveAccount": "Already have an account?",
+        "login": "Login here",
+        "doesntMatchError": "Passwords don't match",
+        "invalidPasswordError": "Invalid password. Password should contain a minimum of 8 symbols, at least one letter, one digit, and one special character"
+    }
+}

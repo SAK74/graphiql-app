@@ -1,0 +1,64 @@
+{
+    "header": {
+        "mainPage": "Главная",
+        "signIn": "Вход",
+        "signUp": "Регистрация",
+        "signOut": "Выйти",
+        "ru": "РУС",
+        "en": "ENG"
+    },
+    "welcomePage": {
+        "cover": {
+            "title": "GraphiQL Проект",
+            "description": "Игровая площадка/IDE для запросов graphQL, финальный проект для курса RSS React 2023 Q1",
+            "github": "Github Репозиторий"
+        },
+        "about": {
+            "title": "О проекте"
+        },
+        "developers": {
+            "title": "Разработчики",
+            "devs": {
+                "Anastasiia Iuferova": "Анастасия Юферова",
+                "Hanna Biruk": "Анна Бирюк",
+                "Sergij Kusyy": "Сергей Кусий",
+                "Lorem ipsum dolor sit amet...": "Translated text for Lorem ipsum dolor sit amet..."
+            }
+        }
+    },
+    "mainPage": {
+        "request": "Запрос",
+        "button": "Запуск",
+        "documents": "Документы",
+        "variables": "Переменные",
+        "response": "Ответ"
+    },
+    "footer": {
+        "devs": {
+            "Anastasiia Iuferova": "Анастасия Юферова",
+            "Hanna Biruk": "Анна Бирюк",
+            "Sergij Kusyy": "Сергей Кусий"
+        }
+    },
+    "signIn": {
+        "title": "Войдите в свой аккаунт",
+        "email": "Почта",
+        "password": "Пароль",
+        "button": "Войти",
+        "dontHaveAccount": "У вас еще нет аккаунта?",
+        "register": "Регистрация",
+        "error": "Что-то пошло не так! Проверьте почту и пароль и повторите попытку!"
+    },
+    "signUp": {
+        "title": "Создать аккаунт",
+        "name": "Полное имя",
+        "email": "Почта",
+        "password": "Пароль",
+        "confirmPassword": "Подтвердите пароль",
+        "button": "Зарегестрироваться",
+        "haveAccount": "У вас уже есть аккаунт?",
+        "login": "Войти здесь",
+        "doesntMatchError": "Пароли не совпадают",
+        "invalidPasswordError": "Неверный пароль. Пароль должен содержать не менее 8 символов, по крайней мере, одну букву, одну цифру и один специальный символ."
+    }
+}

@@ -1,11 +1,15 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Docs } from 'components/Docs';
 import { ResponseComponent } from 'components/main/Response';
-import { Dispatch, SetStateAction, createContext, useState, useContext } from 'react';
+import { Dispatch, SetStateAction, createContext, useState, useEffect, useContext } from 'react';
 import RequestArea from 'components/RequestArea';
 import { VariablesBlock } from 'components/main/Variables';
 import { API_URL } from '_constants/apiUrl';
 import DEFAULT_QUERY from '_constants/defaultQuery';
+import { auth } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const client = new ApolloClient({
   uri: API_URL,
@@ -41,6 +45,16 @@ export default function MainPage() {
   const [query, setQuery] = useState<string>(DEFAULT_QUERY);
   const [variables, setVariables] = useState<VarsType | undefined>({ id: '2' });
   const [request, setRequest] = useState<RequestType>({});
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   const runRequest = () => {
     setRequest({ query, variables });
@@ -55,12 +69,12 @@ export default function MainPage() {
             <div>
               <div className="rounded-t-lg shadow-md p-4">
                 <div className="flex justify-between">
-                  <p className="text-lg font-semibold p-2">Request</p>
+                  <p className="text-lg font-semibold">{t('mainPage.request')}</p>
                   <button
                     onClick={runRequest}
                     className="py-2 px-3 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md"
                   >
-                    Run
+                    {t('mainPage.button')}
                   </button>
                 </div>
                 <RequestArea />

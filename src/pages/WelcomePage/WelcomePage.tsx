@@ -5,7 +5,7 @@ import Cover from './Cover';
 
 export default function WelcomePage() {
   return (
-    <div className="w-full m-0 bg-white m-0 pt-3 box px-16 max-md:p-8">
+    <div className="w-full bg-white m-0 pt-3 box px-16 max-md:p-8">
       <Cover />
       <AboutProject />
       <AboutDevs />

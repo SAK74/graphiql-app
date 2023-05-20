@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useTranslation } from 'react-i18next';
 
 const SignUpPage = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ const SignUpPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const { t } = useTranslation();
   useEffect(() => {
     if (user) {
       navigate('/');
@@ -25,12 +27,10 @@ const SignUpPage = () => {
 
     if (password !== '' && confirmPassword !== '' && password !== confirmPassword) {
       isValid = false;
-      setErrorMessage('Passwords does not match');
+      setErrorMessage(t('signUp.doesntMatchError') as string);
     } else if (!passwordRegex.test(password)) {
       isValid = false;
-      setErrorMessage(
-        'Invalid password. Password should contain minimum 8 symbols, at least one letter, one digit and one special character'
-      );
+      setErrorMessage(t('signUp.invalidPasswordError') as string);
     }
 
     return isValid;
@@ -59,12 +59,12 @@ const SignUpPage = () => {
       <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-            Create an account
+            {t('signUp.title')}
           </h1>
           <form className="space-y-4 md:space-y-6 " action="#" onSubmit={register}>
             <div>
               <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">
-                Your Full Name
+                {t('signUp.name')}
               </label>
               <input
                 type="name"
@@ -78,7 +78,7 @@ const SignUpPage = () => {
             </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">
-                Your email
+                {t('signUp.email')}
               </label>
               <input
                 type="email"
@@ -92,7 +92,7 @@ const SignUpPage = () => {
             </div>
             <div>
               <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">
-                Password
+                {t('signUp.password')}
               </label>
               <input
                 type="password"
@@ -109,7 +109,7 @@ const SignUpPage = () => {
                 htmlFor="confirm-password"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
-                Confirm Password
+                {t('signUp.confirmPassword')}
               </label>
               <input
                 type="password"
@@ -126,12 +126,12 @@ const SignUpPage = () => {
               type="submit"
               className="w-full text-white bg-dark-blue hover:bg-light-blue hover:text-black focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
-              Create an account
+              {t('signUp.button')}
             </button>
             <p className="text-sm font-light text-gray-500">
-              Already have an account?
+              {t('signUp.haveAccount')}
               <Link to="/sign-in" className="font-medium text-blue-600 hover:underline p-2">
-                Login here
+                {t('signUp.login')}
               </Link>
             </p>
           </form>

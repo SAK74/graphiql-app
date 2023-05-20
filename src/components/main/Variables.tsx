@@ -1,12 +1,14 @@
 import { useQueryContext } from 'pages/MainPage';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const VariablesBlock = () => {
   const { setVariables } = useQueryContext();
   const [opened, setOpened] = useState<boolean>(false);
+  const { t } = useTranslation();
   return (
     <div className="rounded-b-lg shadow-md p-4">
-      <p className="text-lg font-semibold p-2">Variables</p>
+      <p className="text-lg font-semibold p-2">{t('mainPage.variables')}</p>
       <div
         className="arrow"
         onClick={() => {

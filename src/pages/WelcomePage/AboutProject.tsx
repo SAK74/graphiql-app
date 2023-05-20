@@ -1,10 +1,14 @@
 import React from 'react';
 import { techs } from '_constants/constants';
+import { useTranslation } from 'react-i18next';
 
 export default function AboutProject() {
+  const { t } = useTranslation();
   return (
     <section className="flex justify-between flex-col p-x-6 my-16">
-      <h2 className="text-3xl md:text-4xl pb-6 font-mono text-dark-blue">About Project</h2>
+      <h2 className="text-3xl md:text-4xl pb-6 font-mono text-dark-blue">
+        {t('welcomePage.about.title')}
+      </h2>
       <p className="text-xl leading-8">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
