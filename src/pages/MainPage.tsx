@@ -22,7 +22,7 @@ const client = new ApolloClient({
 
 export default function MainPage() {
   const [query, setQuery] = useState<string>(DEFAULT_QUERY);
-  const [variables, setVariables] = useState<VarsType | undefined>({ id: '2' });
+  const [variables, setVariables] = useState<VarsType>('{}');
   const [request, setRequest] = useState<RequestType>({});
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -34,7 +34,12 @@ export default function MainPage() {
   }, [user, navigate]);
 
   const runRequest = () => {
-    setRequest({ query, variables });
+    try {
+      console.log(JSON.parse(variables || ''));
+      setRequest({ query, variables: JSON.parse(variables || '') });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

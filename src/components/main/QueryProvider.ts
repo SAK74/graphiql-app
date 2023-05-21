@@ -4,15 +4,15 @@ interface ContextType {
   query: string;
   setQuery: Dispatch<SetStateAction<string>>;
   variables?: VarsType;
-  setVariables: Dispatch<SetStateAction<VarsType | undefined>>;
+  setVariables: Dispatch<SetStateAction<VarsType>>;
   request: RequestType;
   runRequest: () => void;
 }
-export type VarsType = Record<string, string>;
+export type VarsType = string;
 
 export interface RequestType {
   query?: string;
-  variables?: VarsType;
+  variables?: Record<string, string>;
 }
 
 export const Ctx = createContext<ContextType | undefined>(undefined);
