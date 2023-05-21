@@ -1,45 +1,24 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { Docs } from 'components/Docs';
-import { ResponseComponent } from 'components/main/Response';
-import { Dispatch, SetStateAction, createContext, useState, useEffect, useContext } from 'react';
-import RequestArea from 'components/RequestArea';
-import { VariablesBlock } from 'components/main/Variables';
+import {
+  Docs,
+  QueryProvider,
+  ResponseComponent,
+  VariablesBlock,
+  VarsType,
+  RequestType,
+  RequestEditor,
+} from 'components/main';
+import { useState, useEffect } from 'react';
 import { API_URL } from '_constants/apiUrl';
 import DEFAULT_QUERY from '_constants/defaultQuery';
-import { auth } from '../firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase';
 
 const client = new ApolloClient({
   uri: API_URL,
   cache: new InMemoryCache(),
 });
-
-interface ContextType {
-  query: string;
-  setQuery: Dispatch<SetStateAction<string>>;
-  variables?: VarsType;
-  setVariables: Dispatch<SetStateAction<VarsType | undefined>>;
-  request: RequestType;
-}
-export interface VarsType {
-  id: string;
-}
-export interface RequestType {
-  query?: string;
-  variables?: VarsType;
-}
-
-export const Ctx = createContext<ContextType | undefined>(undefined);
-
-export const useQueryContext = () => {
-  const ctx = useContext(Ctx);
-  if (!ctx) {
-    throw Error('component out of context...');
-  }
-  return ctx;
-};
 
 export default function MainPage() {
   const [query, setQuery] = useState<string>(DEFAULT_QUERY);
@@ -47,14 +26,12 @@ export default function MainPage() {
   const [request, setRequest] = useState<RequestType>({});
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-  const { t } = useTranslation();
 
   useEffect(() => {
     if (!user) {
       navigate('/');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [user, navigate]);
 
   const runRequest = () => {
     setRequest({ query, variables });
@@ -63,27 +40,16 @@ export default function MainPage() {
   return (
     <>
       <ApolloProvider client={client}>
-        <Ctx.Provider value={{ query, setQuery, variables, setVariables, request }}>
+        <QueryProvider value={{ query, setQuery, variables, setVariables, request, runRequest }}>
           <div className="grid gap-10 grid-cols-1 mt-6 md:grid-cols-[20%,1fr,1fr]">
             <Docs />
             <div>
-              <div className="rounded-t-lg shadow-md p-4">
-                <div className="flex justify-between">
-                  <p className="text-lg font-semibold">{t('mainPage.request')}</p>
-                  <button
-                    onClick={runRequest}
-                    className="py-2 px-3 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md"
-                  >
-                    {t('mainPage.button')}
-                  </button>
-                </div>
-                <RequestArea />
-              </div>
+              <RequestEditor />
               <VariablesBlock />
             </div>
             <ResponseComponent />
           </div>
-        </Ctx.Provider>
+        </QueryProvider>
       </ApolloProvider>
     </>
   );
