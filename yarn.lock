@@ -7008,6 +7008,11 @@
   dependencies:
     "function-bind" "^1.1.1"
 
+"hash-sum@^2.0.0":
+  "integrity" "sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg=="
+  "resolved" "https://registry.npmjs.org/hash-sum/-/hash-sum-2.0.0.tgz"
+  "version" "2.0.0"
+
 "he@^1.2.0":
   "integrity" "sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw=="
   "resolved" "https://registry.npmjs.org/he/-/he-1.2.0.tgz"
@@ -10279,6 +10284,13 @@
   "integrity" "sha512-y2UpWs82xs+39q5Rc/wq316ca52QsC0n8m801V+yM4IC4hbfOL4yQPVSh7w+ydstdvjN9F+lvs1WrO2VYxpmdA=="
   "resolved" "https://registry.npmjs.org/react-firebase-hooks/-/react-firebase-hooks-5.1.1.tgz"
   "version" "5.1.1"
+
+"react-hyper-tree@^0.3.12":
+  "integrity" "sha512-g3jtAPoU60P3ZYwO98QQmxaAzeE/BE2p12L7UXTAXytpu4CxnGSPgDFSepLrC1Wsb3iV0gxRB2pdWvksvGrI6A=="
+  "resolved" "https://registry.npmjs.org/react-hyper-tree/-/react-hyper-tree-0.3.12.tgz"
+  "version" "0.3.12"
+  dependencies:
+    "hash-sum" "^2.0.0"
 
 "react-is@^16.13.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
