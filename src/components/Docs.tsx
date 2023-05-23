@@ -2,16 +2,40 @@ import { gql, useQuery } from '@apollo/client';
 import { SCHEMA_QUERY } from '_constants/defaultQuery';
 
 export const Docs = () => {
+  interface argsType {
+    __typename: string;
+    name: string;
+  }
   const { loading, error, data } = useQuery(gql(SCHEMA_QUERY));
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="text-lg font-semibold p-2">
-      {data.__schema.queryType.fields.map((field: { name: string }) => (
-        <p key={field.name}>{field.name}</p>
-      ))}
+    <div className="p-6">
+      <h1 className="text-lg font-semibold p-2">Documents</h1>
+      {data.__schema.queryType.fields.map(
+        (field: { name: string; description: string; args: argsType[] }) => {
+          console.log(field.args);
+          return (
+            <div key={field.name}>
+              <h2 className="text-lg font-semibold p-2">{field.name}</h2>
+              <p className="italic">{field.description}</p>
+              {field.args && (
+                <ul>
+                  {field.args.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        {item.name}:{item.__typename}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+          );
+        }
+      )}
     </div>
   );
 };
@@ -19,28 +43,22 @@ export const Docs = () => {
 /*import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, gql, useQuery } from '@apollo/client';
 
-const GET_SCHEMA_FIELDS = gql`
-  {
-    __schema {
-      types {
+const GET_SCHEMA_FIELDS = gql`{
+  __schema {
+    queryType {
+      fields {
         name
-        fields {
+        description
+        args{
           name
-          args {
+          type {
             name
-            type {
-              name
-              kind
-              ofType {
-                name
-                kind
-              }
-            }
           }
         }
       }
     }
   }
+}
 `;
 
 const SchemaFields = () => {
@@ -90,4 +108,50 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
+
+{
+  __schema {
+    queryType {
+      fields {
+        name
+        description
+        args{
+          name
+          type {
+            
+          }
+        }
+      }
+    }
+  }
+}
+
+{
+  __schema {
+    queryType {
+      fields {
+        name
+        description
+        args{
+          name
+          type {
+            name
+            fields {
+              name
+              description
+              args{
+                
+              }
+            }
+            
+          }
+        }
+      }
+    }
+  }
+}
 */

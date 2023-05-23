@@ -13,6 +13,10 @@ export const SCHEMA_QUERY = `{
     queryType {
       fields {
         name
+        description
+        args {
+          name
+        }
       }
     }
   }

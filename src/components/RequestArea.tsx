@@ -11,6 +11,7 @@ import { API_URL } from '_constants/apiUrl';
 const RequestArea = ({ className }: { className?: string }) => {
   const [graphQLSchema, setGraphQLSchema] = useState<GraphQLSchema>();
   const { query, setQuery } = useQueryContext();
+
   useEffect(() => {
     const fetchSchema = async () => {
       const remoteExecutor = buildHTTPExecutor({
@@ -18,6 +19,7 @@ const RequestArea = ({ className }: { className?: string }) => {
       });
       const schema = await schemaFromExecutor(remoteExecutor);
       setGraphQLSchema(schema);
+      console.log(schema);
     };
     fetchSchema();
   }, []);
