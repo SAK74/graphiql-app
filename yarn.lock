@@ -6621,6 +6621,16 @@
   "resolved" "https://registry.npmjs.org/get-caller-file/-/get-caller-file-2.0.5.tgz"
   "version" "2.0.5"
 
+"get-graphql-schema@^2.1.2":
+  "integrity" "sha512-1z5Hw91VrE3GrpCZE6lE8Dy+jz4kXWesLS7rCSjwOxf5BOcIedAZeTUJRIeIzmmR+PA9CKOkPTYFRJbdgUtrxA=="
+  "resolved" "https://registry.npmjs.org/get-graphql-schema/-/get-graphql-schema-2.1.2.tgz"
+  "version" "2.1.2"
+  dependencies:
+    "chalk" "^2.4.1"
+    "graphql" "^14.0.2"
+    "minimist" "^1.2.0"
+    "node-fetch" "^2.2.0"
+
 "get-intrinsic@^1.0.2", "get-intrinsic@^1.1.1", "get-intrinsic@^1.1.3", "get-intrinsic@^1.2.0":
   "integrity" "sha512-L049y6nFOuom5wGyRc3/gdTLO94dySVKRACj1RmJZBQXlbTMhtNIgkWkUHq+jYmZvKf14EW1EoJnnjbmoHij0Q=="
   "resolved" "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.0.tgz"
@@ -6910,6 +6920,13 @@
     "tslib" "^2.4.0"
   optionalDependencies:
     "@apollo/client" "~3.2.5 || ~3.3.0 || ~3.4.0 || ~3.5.0 || ~3.6.0 || ~3.7.0"
+
+"graphql@^14.0.2":
+  "integrity" "sha512-l0xWZpoPKpppFzMfvVyFmp9vLN7w/ZZJPefUicMCepfJeQ8sMcztloGYY9DfjVPo6tIUDzU5Hw3MUbIjj9AVVA=="
+  "resolved" "https://registry.npmjs.org/graphql/-/graphql-14.7.0.tgz"
+  "version" "14.7.0"
+  dependencies:
+    "iterall" "^1.2.2"
 
 "graphql@^16.6.0":
   "integrity" "sha512-KPIBPDlW7NxrbT/eh4qPXz5FiFdL5UbaA0XUNz2Rp3Z3hqBSkbj0GVjwFDztsWVauZUWsbKHgMg++sk8UX0bkw=="
@@ -7642,6 +7659,11 @@
   dependencies:
     "html-escaper" "^2.0.0"
     "istanbul-lib-report" "^3.0.0"
+
+"iterall@^1.2.2":
+  "integrity" "sha512-QZ9qOMdF+QLHxy1QIpUHUU1D5pS2CG2P69LF6L6CPjPYA/XMOmKV3PZpawHoAjHNyB0swdVTRxdYT4tbBbxqwg=="
+  "resolved" "https://registry.npmjs.org/iterall/-/iterall-1.3.0.tgz"
+  "version" "1.3.0"
 
 "jake@^10.8.5":
   "integrity" "sha512-sVpxYeuAhWt0OTWITwT98oyV0GsXyMlXCF+3L1SuafBVUIr/uILGRB+NqwkzhgXKvoJpDIpQvqkUALgdmQsQxw=="
@@ -8883,7 +8905,7 @@
     "lower-case" "^2.0.2"
     "tslib" "^2.0.3"
 
-"node-fetch@^2.6.1", "node-fetch@^2.6.7", "node-fetch@2.6.7":
+"node-fetch@^2.2.0", "node-fetch@^2.6.1", "node-fetch@^2.6.7", "node-fetch@2.6.7":
   "integrity" "sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ=="
   "resolved" "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.7.tgz"
   "version" "2.6.7"
