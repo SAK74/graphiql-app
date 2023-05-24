@@ -24,6 +24,13 @@ const RequestArea = ({ className }: { className?: string }) => {
     fetchSchema();
   }, []);
 
+  useEffect(() => {
+    if (graphQLSchema) {
+      const schemaJSON = JSON.stringify(graphQLSchema);
+      console.log(JSON.parse(schemaJSON));
+    }
+  }, [graphQLSchema]);
+
   return (
     <>
       {graphQLSchema && (

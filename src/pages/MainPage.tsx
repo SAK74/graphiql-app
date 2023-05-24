@@ -6,7 +6,6 @@ import RequestArea from 'components/RequestArea';
 import { VariablesBlock } from 'components/main/Variables';
 import { API_URL } from '_constants/apiUrl';
 import DEFAULT_QUERY from '_constants/defaultQuery';
-import TreeExample from 'components/treeExample';
 
 const client = new ApolloClient({
   uri: API_URL,
@@ -52,7 +51,7 @@ export default function MainPage() {
       <ApolloProvider client={client}>
         <Ctx.Provider value={{ query, setQuery, variables, setVariables, request }}>
           <div className="grid gap-10 grid-cols-1 mt-6 md:grid-cols-[20%,1fr,1fr]">
-            <TreeExample />
+            <Docs />
             <div>
               <div className="rounded-t-lg shadow-md p-4">
                 <div className="flex justify-between">
