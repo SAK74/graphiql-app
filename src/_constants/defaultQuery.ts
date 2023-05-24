@@ -1,4 +1,4 @@
-const DEFAULT_QUERY = `query Character {
+export const DEFAULT_QUERY = `query Character {
     characters {
       results {
         name
@@ -16,6 +16,31 @@ export const SCHEMA_QUERY = `{
         description
         args {
           name
+        }
+      }
+    }
+  }
+}`;
+
+export const INTROSPECTION_QUERY = `query IntrospectionQuery {
+  __schema {
+    queryType {
+      fields {
+        name
+        description
+        args {
+          name
+        }
+        type {
+          name
+        fields {
+          name
+          description
+          type {
+            name
+            description
+          }
+        }
         }
       }
     }

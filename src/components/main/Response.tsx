@@ -9,8 +9,6 @@ const RickResponse: FC<{ query: string }> = ({ query }) => {
   } = useQueryContext();
   const { data, loading, error } = useQuery(gql(query), { variables });
 
-  console.log(data);
-
   const content = loading ? (
     <div className="flex justify-center items-center" role="status">
       <svg

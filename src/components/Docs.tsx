@@ -1,5 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
-import { SCHEMA_QUERY } from '_constants/defaultQuery';
+import { INTROSPECTION_QUERY } from '_constants/defaultQuery';
 import { Tree, useTreeState } from 'react-hyper-tree';
 import { nanoid } from 'nanoid';
 import { useCallback, useEffect, useState } from 'react';
@@ -15,7 +15,20 @@ export const Docs = () => {
     children?: TreeNode[];
   }
 
-  const { loading, error, data: schemaData } = useQuery(gql(SCHEMA_QUERY));
+  interface Type {
+    __typename: string;
+    name: string;
+    fields: Field[];
+  }
+
+  interface Field {
+    __typename: string;
+    name: string;
+    description: string;
+    type: Type;
+  }
+
+  const { loading, error, data: schemaData } = useQuery(gql(INTROSPECTION_QUERY));
 
   const [data, setData] = useState<TreeNode>({
     id: '0',
@@ -25,11 +38,22 @@ export const Docs = () => {
   const dataRender: () => TreeNode = useCallback(() => {
     if (schemaData) {
       const dataRendered: TreeNode[] = schemaData.__schema.queryType.fields.map(
-        (field: { name: string; description: string; args: argsType[] }) => {
+        (field: { name: string; description: string; args: argsType[]; type: Type }) => {
           const childrenArg = field.args.map((arg: argsType) => ({
             id: nanoid(),
             name: arg.name,
           }));
+
+          const childrenFields =
+            field.type.fields &&
+            field.type.fields.map((field) => {
+              const names = {
+                id: nanoid(),
+                name: field.name,
+                children: [{ id: nanoid(), name: field.description }],
+              };
+              return names;
+            });
 
           const childrenDescription = [
             {
@@ -37,7 +61,8 @@ export const Docs = () => {
               name: field.description,
             },
           ];
-          console.log(childrenDescription);
+
+          console.log(field.type);
 
           const node: TreeNode = {
             id: nanoid(),
@@ -45,6 +70,7 @@ export const Docs = () => {
             children: [
               { id: nanoid(), name: 'arguments', children: childrenArg },
               { id: nanoid(), name: 'description', children: childrenDescription },
+              { id: nanoid(), name: 'fields', children: childrenFields },
             ],
           };
 
