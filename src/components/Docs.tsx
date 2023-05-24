@@ -34,7 +34,7 @@ export const Docs = () => {
           const node: TreeNode = {
             id: nanoid(),
             name: field.name,
-            children: children,
+            children: [{ id: nanoid(), name: 'arguments', children: children }],
           };
 
           return node;
