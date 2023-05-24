@@ -1,11 +1,19 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { Docs } from 'components/Docs';
 import { ResponseComponent } from 'components/main/Response';
-import { Dispatch, SetStateAction, createContext, useState, useContext } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  createContext,
+  useState,
+  useContext,
+  Suspense,
+  lazy,
+} from 'react';
 import RequestArea from 'components/RequestArea';
 import { VariablesBlock } from 'components/main/Variables';
 import { API_URL } from '_constants/apiUrl';
 import DEFAULT_QUERY from '_constants/defaultQuery';
+const Docs = lazy(() => import('components/Docs'));
 
 const client = new ApolloClient({
   uri: API_URL,
@@ -46,12 +54,18 @@ export default function MainPage() {
     setRequest({ query, variables });
   };
 
+  function Loading() {
+    return <h2>Loading...</h2>;
+  }
+
   return (
     <>
       <ApolloProvider client={client}>
         <Ctx.Provider value={{ query, setQuery, variables, setVariables, request }}>
           <div className="grid gap-10 grid-cols-1 mt-6 md:grid-cols-[20%,1fr,1fr]">
-            <Docs />
+            <Suspense fallback={<Loading />}>
+              <Docs />
+            </Suspense>
             <div>
               <div className="rounded-t-lg shadow-md p-4">
                 <div className="flex justify-between">

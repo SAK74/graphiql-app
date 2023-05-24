@@ -7,17 +7,10 @@ import { schemaFromExecutor } from '@graphql-tools/wrap';
 import clsx from 'clsx';
 import { useQueryContext } from 'pages/MainPage';
 import { API_URL } from '_constants/apiUrl';
-import { gql, useQuery } from '@apollo/client';
-import { INTROSPECTION_QUERY } from '_constants/defaultQuery';
 
 const RequestArea = ({ className }: { className?: string }) => {
   const [graphQLSchema, setGraphQLSchema] = useState<GraphQLSchema>();
   const { query, setQuery } = useQueryContext();
-
-  const { loading, error, data: schemaData } = useQuery(gql(INTROSPECTION_QUERY));
-
-  console.log(schemaData);
-
   useEffect(() => {
     const fetchSchema = async () => {
       const remoteExecutor = buildHTTPExecutor({

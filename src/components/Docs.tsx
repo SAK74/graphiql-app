@@ -1,38 +1,16 @@
 import { gql, useQuery } from '@apollo/client';
-import { INTROSPECTION_QUERY } from '_constants/defaultQuery';
 import { Tree, useTreeState } from 'react-hyper-tree';
 import { nanoid } from 'nanoid';
 import { useCallback, useEffect, useState } from 'react';
+import { INTROSPECTION_QUERY } from '_constants/schemaQuery';
+import { TreeNode, Type, argsType } from 'types/types';
 
-export const Docs = () => {
-  interface argsType {
-    __typename: string;
-    name: string;
-  }
-  interface TreeNode {
-    id: string;
-    name: string;
-    children?: TreeNode[];
-  }
-
-  interface Type {
-    __typename: string;
-    name: string;
-    fields: Field[];
-  }
-
-  interface Field {
-    __typename: string;
-    name: string;
-    description: string;
-    type: Type;
-  }
-
-  const { loading, error, data: schemaData } = useQuery(gql(INTROSPECTION_QUERY));
+const Docs = () => {
+  const { error, data: schemaData } = useQuery(gql(INTROSPECTION_QUERY));
 
   const [data, setData] = useState<TreeNode>({
     id: '0',
-    name: 'Root',
+    name: 'Query',
   });
 
   const dataRender: () => TreeNode = useCallback(() => {
@@ -47,10 +25,29 @@ export const Docs = () => {
           const childrenFields =
             field.type.fields &&
             field.type.fields.map((field) => {
+              const descriptions = {
+                id: nanoid(),
+                name: field.description,
+              };
+
+              const typesDescription = {
+                id: nanoid(),
+                name: field.type.description,
+              };
+
+              const types = {
+                id: nanoid(),
+                name: field.type.name,
+                children: [typesDescription],
+              };
+
               const names = {
                 id: nanoid(),
                 name: field.name,
-                children: [{ id: nanoid(), name: field.description }],
+                children: [
+                  { id: nanoid(), name: 'description', children: [descriptions] },
+                  { id: nanoid(), name: 'type', children: [types] },
+                ],
               };
               return names;
             });
@@ -61,8 +58,6 @@ export const Docs = () => {
               name: field.description,
             },
           ];
-
-          console.log(field.type);
 
           const node: TreeNode = {
             id: nanoid(),
@@ -98,21 +93,21 @@ export const Docs = () => {
     }
   }, [schemaData, dataRender]);
 
-  console.log(schemaData);
-
   const { required, handlers } = useTreeState({
     data,
     id: 'myTree',
     refreshAsyncNodes: true,
   });
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="p-6">
       <h1 className="text-lg font-semibold p-2">Documents</h1>
+
       {schemaData && <Tree {...required} {...handlers} />}
     </div>
   );
 };
+
+export default Docs;
