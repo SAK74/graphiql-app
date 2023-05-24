@@ -26,15 +26,26 @@ export const Docs = () => {
     if (schemaData) {
       const dataRendered: TreeNode[] = schemaData.__schema.queryType.fields.map(
         (field: { name: string; description: string; args: argsType[] }) => {
-          const children = field.args.map((arg: argsType) => ({
+          const childrenArg = field.args.map((arg: argsType) => ({
             id: nanoid(),
             name: arg.name,
           }));
 
+          const childrenDescription = [
+            {
+              id: nanoid(),
+              name: field.description,
+            },
+          ];
+          console.log(childrenDescription);
+
           const node: TreeNode = {
             id: nanoid(),
             name: field.name,
-            children: [{ id: nanoid(), name: 'arguments', children: children }],
+            children: [
+              { id: nanoid(), name: 'arguments', children: childrenArg },
+              { id: nanoid(), name: 'description', children: childrenDescription },
+            ],
           };
 
           return node;
@@ -48,13 +59,11 @@ export const Docs = () => {
       return result;
     }
     return {
-      id: '0',
-      name: 'Root',
+      id: 'myTree',
+      name: 'Query',
       children: [],
     };
   }, [schemaData]);
-
-  console.log(data);
 
   useEffect(() => {
     if (schemaData) {
@@ -62,6 +71,8 @@ export const Docs = () => {
       setData(data);
     }
   }, [schemaData, dataRender]);
+
+  console.log(schemaData);
 
   const { required, handlers } = useTreeState({
     data,
