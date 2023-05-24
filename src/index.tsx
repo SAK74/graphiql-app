@@ -10,7 +10,7 @@ import Spinner from 'components/Spinner';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Suspense fallback={<Spinner size="large" />}>
+      <Suspense fallback={<Spinner centered />}>
         <App />
       </Suspense>
     </BrowserRouter>
