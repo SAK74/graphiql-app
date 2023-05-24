@@ -102,7 +102,7 @@ const Docs = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="p-6">
+    <div className="p-4">
       <h1 className="text-lg font-semibold p-2">Documents</h1>
 
       {schemaData && <Tree {...required} {...handlers} />}
