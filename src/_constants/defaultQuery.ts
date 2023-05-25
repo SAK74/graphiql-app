@@ -1,9 +1,8 @@
-export const DEFAULT_QUERY = `query Character {
-    characters {
-      results {
-        name
-      }
-    }
-    }`;
+const DEFAULT_QUERY = `query Character($id:ID!) {
+  character(id:$id) {
+    name
+    id
+  }
+  }`;
 
 export default DEFAULT_QUERY;

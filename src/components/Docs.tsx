@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { gql, useQuery } from '@apollo/client';
 import { Tree, useTreeState } from 'react-hyper-tree';
 import { useCallback, useEffect, useState, useId } from 'react';
@@ -5,6 +6,7 @@ import { INTROSPECTION_QUERY } from '_constants/schemaQuery';
 import { TreeNode, Type, argsType } from 'types/types';
 
 const Docs = () => {
+  const { t } = useTranslation();
   const { error, data: schemaData } = useQuery(gql(INTROSPECTION_QUERY));
 
   const id = useId();
@@ -104,7 +106,7 @@ const Docs = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-lg font-semibold p-2">Documents</h1>
+      <h1 className="text-lg font-semibold p-2">{t('mainPage.documents')}</h1>
       {schemaData && <Tree {...required} {...handlers} />}
     </div>
   );
