@@ -105,7 +105,6 @@ const Docs = () => {
   return (
     <div className="p-4">
       <h1 className="text-lg font-semibold p-2">Documents</h1>
-
       {schemaData && <Tree {...required} {...handlers} />}
     </div>
   );
