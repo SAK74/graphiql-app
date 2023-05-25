@@ -7,7 +7,7 @@ import {
   RequestType,
   RequestEditor,
 } from 'components/main';
-import { useState,  Suspense, useEffect, lazy,} from 'react';
+import { useState, Suspense, useEffect, lazy } from 'react';
 import { API_URL } from '_constants/apiUrl';
 import DEFAULT_QUERY from '_constants/defaultQuery';
 import { useNavigate } from 'react-router-dom';
@@ -42,7 +42,6 @@ export default function MainPage() {
       console.error(err);
     }
   };
-
 
   return (
     <>
