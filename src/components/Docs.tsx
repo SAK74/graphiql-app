@@ -1,12 +1,13 @@
 import { gql, useQuery } from '@apollo/client';
 import { Tree, useTreeState } from 'react-hyper-tree';
-import { nanoid } from 'nanoid';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useId } from 'react';
 import { INTROSPECTION_QUERY } from '_constants/schemaQuery';
 import { TreeNode, Type, argsType } from 'types/types';
 
 const Docs = () => {
   const { error, data: schemaData } = useQuery(gql(INTROSPECTION_QUERY));
+
+  const id = useId();
 
   const [data, setData] = useState<TreeNode>({
     id: '0',
@@ -18,7 +19,7 @@ const Docs = () => {
       const dataRendered: TreeNode[] = schemaData.__schema.queryType.fields.map(
         (field: { name: string; description: string; args: argsType[]; type: Type }) => {
           const childrenArg = field.args.map((arg: argsType) => ({
-            id: nanoid(),
+            id: id,
             name: arg.name,
           }));
 
@@ -26,27 +27,27 @@ const Docs = () => {
             field.type.fields &&
             field.type.fields.map((field) => {
               const descriptions = {
-                id: nanoid(),
+                id: id,
                 name: field.description,
               };
 
               const typesDescription = {
-                id: nanoid(),
+                id: id,
                 name: field.type.description,
               };
 
               const types = {
-                id: nanoid(),
+                id: id,
                 name: field.type.name,
                 children: [typesDescription],
               };
 
               const names = {
-                id: nanoid(),
+                id: id,
                 name: field.name,
                 children: [
-                  { id: nanoid(), name: 'description', children: [descriptions] },
-                  { id: nanoid(), name: 'type', children: [types] },
+                  { id: id, name: 'description', children: [descriptions] },
+                  { id: id, name: 'type', children: [types] },
                 ],
               };
               return names;
@@ -54,18 +55,18 @@ const Docs = () => {
 
           const childrenDescription = [
             {
-              id: nanoid(),
+              id: id,
               name: field.description,
             },
           ];
 
           const node: TreeNode = {
-            id: nanoid(),
+            id: id,
             name: field.name,
             children: [
-              { id: nanoid(), name: 'arguments', children: childrenArg },
-              { id: nanoid(), name: 'description', children: childrenDescription },
-              { id: nanoid(), name: 'fields', children: childrenFields },
+              { id: id, name: 'arguments', children: childrenArg },
+              { id: id, name: 'description', children: childrenDescription },
+              { id: id, name: 'fields', children: childrenFields },
             ],
           };
 
@@ -84,7 +85,7 @@ const Docs = () => {
       name: 'Query',
       children: [],
     };
-  }, [schemaData]);
+  }, [id, schemaData]);
 
   useEffect(() => {
     if (schemaData) {

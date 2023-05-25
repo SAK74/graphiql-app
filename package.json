@@ -35,7 +35,6 @@
     "graphql-tag": "^2.12.6",
     "graphql-tools": "^8.3.20",
     "lint-staged": "^13.2.2",
-    "nanoid": "^4.0.2",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
