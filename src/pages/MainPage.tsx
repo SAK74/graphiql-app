@@ -1,18 +1,19 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { ResponseComponent } from 'components/main/Response';
 import {
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useState,
-  useContext,
-  Suspense,
-  lazy,
-} from 'react';
-import RequestArea from 'components/RequestArea';
-import { VariablesBlock } from 'components/main/Variables';
+  QueryProvider,
+  ResponseComponent,
+  VariablesBlock,
+  VarsType,
+  RequestType,
+  RequestEditor,
+} from 'components/main';
+import { useState,  Suspense, useEffect, lazy,} from 'react';
 import { API_URL } from '_constants/apiUrl';
 import DEFAULT_QUERY from '_constants/defaultQuery';
+import { useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase';
+import Spinner from 'components/Spinner';
 const Docs = lazy(() => import('components/Docs'));
 
 const client = new ApolloClient({
@@ -20,70 +21,44 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-interface ContextType {
-  query: string;
-  setQuery: Dispatch<SetStateAction<string>>;
-  variables?: VarsType;
-  setVariables: Dispatch<SetStateAction<VarsType | undefined>>;
-  request: RequestType;
-}
-export interface VarsType {
-  id: string;
-}
-export interface RequestType {
-  query?: string;
-  variables?: VarsType;
-}
-
-export const Ctx = createContext<ContextType | undefined>(undefined);
-
-export const useQueryContext = () => {
-  const ctx = useContext(Ctx);
-  if (!ctx) {
-    throw Error('component out of context...');
-  }
-  return ctx;
-};
-
 export default function MainPage() {
   const [query, setQuery] = useState<string>(DEFAULT_QUERY);
-  const [variables, setVariables] = useState<VarsType | undefined>({ id: '2' });
+  const [variables, setVariables] = useState<VarsType>('{}');
   const [request, setRequest] = useState<RequestType>({});
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const runRequest = () => {
-    setRequest({ query, variables });
+    try {
+      console.log(JSON.parse(variables || ''));
+      setRequest({ query, variables: JSON.parse(variables || '') });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  function Loading() {
-    return <h2>Loading...</h2>;
-  }
 
   return (
     <>
       <ApolloProvider client={client}>
-        <Ctx.Provider value={{ query, setQuery, variables, setVariables, request }}>
+        <QueryProvider value={{ query, setQuery, variables, setVariables, request, runRequest }}>
           <div className="grid gap-10 grid-cols-1 mt-6 md:grid-cols-[20%,1fr,1fr]">
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<Spinner />}>
               <Docs />
             </Suspense>
             <div>
-              <div className="rounded-t-lg shadow-md p-4">
-                <div className="flex justify-between">
-                  <p className="text-lg font-semibold p-2">Request</p>
-                  <button
-                    onClick={runRequest}
-                    className="py-2 px-3 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md"
-                  >
-                    Run
-                  </button>
-                </div>
-                <RequestArea />
-              </div>
+              <RequestEditor />
               <VariablesBlock />
             </div>
             <ResponseComponent />
           </div>
-        </Ctx.Provider>
+        </QueryProvider>
       </ApolloProvider>
     </>
   );

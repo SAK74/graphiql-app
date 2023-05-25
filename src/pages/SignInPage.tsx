@@ -3,6 +3,7 @@ import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useTranslation } from 'react-i18next';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
@@ -10,6 +11,7 @@ const SignInPage = () => {
   const [error, setError] = useState('');
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (user) {
@@ -23,7 +25,7 @@ const SignInPage = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      setError('Something went wrong! Check your email and password and try again!');
+      setError(t('signIn.error') as string);
     }
   };
 
@@ -32,12 +34,12 @@ const SignInPage = () => {
       <div className="w-full  bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 ">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
-            Sign in to your account
+            {t('signIn.title')}
           </h1>
           <form className="space-y-4 md:space-y-6 " action="#" onSubmit={handleSignIn}>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">
-                Your email
+                {t('signIn.email')}
               </label>
               <input
                 type="email"
@@ -51,7 +53,7 @@ const SignInPage = () => {
             </div>
             <div>
               <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">
-                Password
+                {t('signIn.password')}
               </label>
               <input
                 type="password"
@@ -68,12 +70,12 @@ const SignInPage = () => {
               type="submit"
               className="w-full text-white  bg-dark-blue hover:bg-light-blue hover:text-black focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
-              Sign in
+              {t('signIn.button')}
             </button>
             <p className="text-sm font-light text-gray-500">
-              Don’t have an account yet?
+              {t('signIn.dontHaveAccount')}
               <Link to="/sign-up" className="font-medium text-blue-600 hover:underline p-2">
-                Register
+                {t('signIn.register')}
               </Link>
             </p>
           </form>
