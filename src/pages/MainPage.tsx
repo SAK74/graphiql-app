@@ -1,6 +1,5 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import {
-  Docs,
   QueryProvider,
   ResponseComponent,
   VariablesBlock,
@@ -8,12 +7,14 @@ import {
   RequestType,
   RequestEditor,
 } from 'components/main';
-import { useState, useEffect } from 'react';
+import { useState, Suspense, useEffect, lazy } from 'react';
 import { API_URL } from '_constants/apiUrl';
 import DEFAULT_QUERY from '_constants/defaultQuery';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
+import Spinner from 'components/Spinner';
+const Docs = lazy(() => import('components/Docs'));
 
 const client = new ApolloClient({
   uri: API_URL,
@@ -47,7 +48,9 @@ export default function MainPage() {
       <ApolloProvider client={client}>
         <QueryProvider value={{ query, setQuery, variables, setVariables, request, runRequest }}>
           <div className="grid gap-10 grid-cols-1 mt-6 md:grid-cols-[20%,1fr,1fr]">
-            <Docs />
+            <Suspense fallback={<Spinner />}>
+              <Docs />
+            </Suspense>
             <div>
               <RequestEditor />
               <VariablesBlock />
