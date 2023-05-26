@@ -23,6 +23,7 @@ export default function AboutProject() {
         </p>
         <p>{t('welcomePage.about.aboutStyles')}</p>
         <p>{t('welcomePage.about.overall')}</p>
+        <p>{t('welcomePage.about.aboutCourse')}</p>
       </div>
       <div>
         <h2 className="text-3xl mt-16 md:text-4xl pb-8 font-mono text-dark-blue">
