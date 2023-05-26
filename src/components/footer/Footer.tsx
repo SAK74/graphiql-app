@@ -4,7 +4,7 @@ import { Author } from './Author';
 import { useTranslation } from 'react-i18next';
 
 const FOOTER = GRAY_HEADER.replace('box', 'flex').concat(
-  ' pb-2 justify-between items-center bottom-0'
+  ' pb-2 justify-between items-center bottom-0 flex-col md:flex-row gap-4'
 );
 
 export const Footer = () => {
@@ -24,7 +24,7 @@ export const Footer = () => {
           className="w-32 hover:scale-110 duration-300 max-md:w-24"
         />
       </a>
-      <div className="space-x-2 inline-flex">
+      <div className="space-x-2 inline-flex flex flex-col md:flex-row gap-4">
         {translatedAuthors.map((author) => (
           <Author key={author.gh_link} {...author} />
         ))}
