@@ -14,7 +14,7 @@ export const RequestEditor = () => {
           onClick={runRequest}
           className="py-2 px-3 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md"
         >
-          {t('mainPage.button')}
+          {t('mainPage.runButton')}
         </button>
       </div>
       <RequestArea />

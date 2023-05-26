@@ -1,9 +1,9 @@
 {
     "header": {
         "mainPage": "Main page",
-        "signIn": "Sign In",
-        "signUp": "Sign Up",
-        "signOut": "Sign Out",
+        "signInButton": "Sign In",
+        "signUpButton": "Sign Up",
+        "signOutButton": "Sign Out",
         "ru": "RU",
         "en": "EN"
     },
@@ -21,13 +21,14 @@
             "devs": {
                 "Anastasiia Iuferova": "Anastasiia Iuferova",
                 "Hanna Biruk": "Hanna Biruk",
-                "Sergij Kusyy": "Sergij Kusyy"
+                "Sergij Kusyy": "Sergij Kusyy",
+                "I'm a Frontend Engineer based in Warsaw, Poland. I specialize in React, Redux, TypeScript, and JavaScript, creating web experiences that truly captivate users. I love solving problems and keeping up with the latest tech trends. Collaboration is important to me, as it brings fresh ideas and leads to great results. When I'm not coding, I explore the tech community for inspiration and to fuel my creative solutions.": "I'm a Frontend Engineer based in Warsaw, Poland. I specialize in React, Redux, TypeScript, and JavaScript, creating web experiences that truly captivate users. I love solving problems and keeping up with the latest tech trends. Collaboration is important to me, as it brings fresh ideas and leads to great results. When I'm not coding, I explore the tech community for inspiration and to fuel my creative solutions."
             }
         }
     },
     "mainPage": {
         "request": "Request",
-        "button": "Run",
+        "runButton": "Run",
         "documents": "Documents",
         "variables": "Variables",
         "response": "Response"

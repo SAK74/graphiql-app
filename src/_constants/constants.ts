@@ -21,7 +21,7 @@ export const devs: Dev[] = [
     pic: AnnaPic,
     gh: 'https://github.com/anna-biruk',
     ln: 'https://www.linkedin.com/in/anna-biruk/',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
+    text: "I'm a Frontend Engineer based in Warsaw, Poland. I specialize in React, Redux, TypeScript, and JavaScript, creating web experiences that truly captivate users. I love solving problems and keeping up with the latest tech trends. Collaboration is important to me, as it brings fresh ideas and leads to great results. When I'm not coding, I explore the tech community for inspiration and to fuel my creative solutions.",
   },
   {
     name: 'Sergij Kusyy',

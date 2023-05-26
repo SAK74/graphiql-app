@@ -8,7 +8,7 @@ export default function SignOutButton({ onClick }: { onClick: () => void }) {
       onClick={onClick}
       className="py-2 px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md"
     >
-      {t('header.signOut')}
+      {t('header.signOutButton')}
     </button>
   );
 }
