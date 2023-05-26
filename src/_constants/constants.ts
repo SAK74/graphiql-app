@@ -21,7 +21,7 @@ export const devs: Dev[] = [
     pic: AnastasiaPic,
     gh: 'https://github.com/AnastasiiaUferova',
     ln: 'https://www.linkedin.com/in/anastasiia-iuferova-frontend-dev/',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt utlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
+    text: "I'm a Frontend Developer with 1 year of experience, committed to delivering user-friendly solutions. Skilled in a range of web development technologies including TypeScript, React.js, REST API, Redux Toolkit and CSS/SCSS. Passionate about building web apps from scratch and enhancing existing ones. Always looking for opportunities to sharpen my skills. Based in Warsaw, Poland.",
   },
   {
     name: 'Hanna Biruk',
