@@ -6,7 +6,14 @@ import AnnaPic from '../assets/Anna.jpeg';
 import SergijPic from '../assets/Sergij.jpeg';
 import { Dev } from '../types/types';
 
-export const techs = ['React.js', 'GraphQL', 'Tailwind CSS', 'Firebase'];
+export const techs = [
+  'React.js',
+  'GraphQL',
+  'Tailwind CSS',
+  'Firebase',
+  'TypeScript',
+  'CodeMirror',
+];
 
 export const devs: Dev[] = [
   {
