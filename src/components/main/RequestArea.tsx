@@ -7,10 +7,11 @@ import { schemaFromExecutor } from '@graphql-tools/wrap';
 import clsx from 'clsx';
 import { useQueryContext } from './QueryProvider';
 import { API_URL } from '_constants/apiUrl';
+import { gql } from '@apollo/client';
 
 const RequestArea = ({ className }: { className?: string }) => {
   const [graphQLSchema, setGraphQLSchema] = useState<GraphQLSchema>();
-  const { query, setQuery } = useQueryContext();
+  const { query, setQuery, setIsSyntaxError } = useQueryContext();
   useEffect(() => {
     const fetchSchema = async () => {
       const remoteExecutor = buildHTTPExecutor({
@@ -22,13 +23,23 @@ const RequestArea = ({ className }: { className?: string }) => {
     fetchSchema();
   }, []);
 
+  const handleQueryChange = (q: string) => {
+    try {
+      gql(q);
+      setQuery(q);
+      setIsSyntaxError(false);
+    } catch (e) {
+      setIsSyntaxError(true);
+    }
+  };
+
   return (
     <>
       {graphQLSchema && (
         <CodeMirror
           className={clsx(className)}
           value={query}
-          onChange={setQuery}
+          onChange={handleQueryChange}
           extensions={[graphql(graphQLSchema)]}
           theme="light"
         />

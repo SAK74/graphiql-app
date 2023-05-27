@@ -5,6 +5,8 @@ interface ContextType {
   setQuery: Dispatch<SetStateAction<string>>;
   variables?: VarsType;
   setVariables: Dispatch<SetStateAction<VarsType>>;
+  isSyntaxError: boolean;
+  setIsSyntaxError: Dispatch<SetStateAction<boolean>>;
   request: RequestType;
   runRequest: () => void;
 }

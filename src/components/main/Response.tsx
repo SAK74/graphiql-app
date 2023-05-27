@@ -4,6 +4,7 @@ import { useQueryContext } from './QueryProvider';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import ReactJson from 'react-json-view';
+
 const RickResponse: FC<{ query: string }> = ({ query }) => {
   const {
     request: { variables },

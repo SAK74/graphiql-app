@@ -23,6 +23,7 @@ const client = new ApolloClient({
 
 export default function MainPage() {
   const [query, setQuery] = useState<string>(DEFAULT_QUERY);
+  const [isSyntaxError, setIsSyntaxError] = useState<boolean>(false);
   const [variables, setVariables] = useState<VarsType>('{}');
   const [request, setRequest] = useState<RequestType>({});
   const [user] = useAuthState(auth);
@@ -46,7 +47,18 @@ export default function MainPage() {
   return (
     <>
       <ApolloProvider client={client}>
-        <QueryProvider value={{ query, setQuery, variables, setVariables, request, runRequest }}>
+        <QueryProvider
+          value={{
+            query,
+            setQuery,
+            variables,
+            setVariables,
+            request,
+            runRequest,
+            isSyntaxError,
+            setIsSyntaxError,
+          }}
+        >
           <div className="grid gap-10 grid-cols-1 mt-6 md:grid-cols-[20%,1fr,1fr]">
             <Suspense fallback={<Spinner />}>
               <Docs />
