@@ -35,6 +35,6 @@ export const devs: Dev[] = [
     pic: SergijPic,
     gh: 'https://github.com/sak74',
     ln: 'https://www.linkedin.com/in/serhiy-kusyy/',
-    text: "I'm a Junior Frontend Developer from Częstochowa (Poland) with a passion for creating engaging web expiriences. I specialize in JS, TS, React.js, Angular partly. I am open to new challenges and axcited about the oppourtunity as a professional frontend developer.",
+    text: "I'm a Junior Frontend Developer from Częstochowa (Poland) with a passion for creating engaging web experiences. I specialize in JS, TS, React.js, and Angular partly. I am open to new challenges and excited about the opportunity as a professional front-end developer.",
   },
 ];
