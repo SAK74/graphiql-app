@@ -68,12 +68,12 @@ export default function Header() {
           {!user ? (
             <>
               <NavLink to="/sign-in">
-                <button className="py-2 px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md">
+                <button className="text-sm px-2 md:py-2 md:px-4 hover:bg-light-blue hover:text-black text-white h-10 bg-dark-blue rounded-md">
                   {t('header.signInButton')}
                 </button>
               </NavLink>
               <NavLink to="/sign-up">
-                <button className="py-2 px-4 hover:bg-gray-400 hover:text-black text-white h-10 bg-gray-700 rounded-md">
+                <button className="text-sm px-2 md:py-2 md:px-4 hover:bg-gray-400 hover:text-black text-white h-10 bg-gray-700 rounded-md">
                   {t('header.signUpButton')}
                 </button>
               </NavLink>
