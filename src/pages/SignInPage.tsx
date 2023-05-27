@@ -15,7 +15,7 @@ const SignInPage = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate('/main');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
