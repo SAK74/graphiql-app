@@ -37,7 +37,6 @@ export default function MainPage() {
 
   const runRequest = () => {
     try {
-      console.log(JSON.parse(variables || ''));
       setRequest({ query, variables: JSON.parse(variables || '') });
     } catch (err) {
       console.error(err);
