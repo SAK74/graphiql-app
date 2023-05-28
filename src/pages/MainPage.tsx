@@ -26,14 +26,14 @@ export default function MainPage() {
   const [isSyntaxError, setIsSyntaxError] = useState<boolean>(false);
   const [variables, setVariables] = useState<VarsType>('{}');
   const [request, setRequest] = useState<RequestType>({});
-  const [user] = useAuthState(auth);
+  const [user, userLoading] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (!userLoading && !user) {
       navigate('/');
     }
-  }, [user, navigate]);
+  }, [user, userLoading, navigate]);
 
   const runRequest = () => {
     try {
