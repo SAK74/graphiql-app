@@ -1,6 +1,6 @@
 # React.js 'GraphiQL IDE' app
 
-## [Check out the project on Vercel](https://graphiql-app-rss.vercel.app/main)
+## [Check out the project on Vercel](https://graphiql-app-rss.vercel.app)
 
 ## Developers:
 
