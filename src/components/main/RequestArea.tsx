@@ -11,7 +11,7 @@ import { gql } from '@apollo/client';
 
 const RequestArea = ({ className }: { className?: string }) => {
   const [graphQLSchema, setGraphQLSchema] = useState<GraphQLSchema>();
-  const { query, setIsSyntaxError } = useQueryContext();
+  const { query, setIsSyntaxError, setQuery } = useQueryContext();
   useEffect(() => {
     const fetchSchema = async () => {
       const remoteExecutor = buildHTTPExecutor({
@@ -26,7 +26,7 @@ const RequestArea = ({ className }: { className?: string }) => {
   const handleQueryChange = (q: string) => {
     try {
       gql(q);
-      // setQuery(q);
+      setQuery(q);
       setIsSyntaxError(false);
     } catch (e) {
       setIsSyntaxError(true);
