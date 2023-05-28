@@ -16,6 +16,15 @@ module.exports = {
         Anna: "url('/assets/Anna.jpeg')",
         Sergij: "url('/assets/Sergij.jpeg')",
       },
+      animation: {
+        grow: 'grow .5s forwards',
+      },
+      keyframes: {
+        grow: {
+          '0%': { top: '100%', transform: 'scale(0) translateX(-50%)' },
+          '100%': { top: '50%', transform: 'scale(1) translateX(-50%)' },
+        },
+      },
     },
   },
   plugins: [],

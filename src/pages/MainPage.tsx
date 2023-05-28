@@ -13,7 +13,7 @@ import DEFAULT_QUERY from '_constants/defaultQuery';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
-import Spinner from 'components/Spinner';
+import { Spinner, Modal } from 'components';
 const Docs = lazy(() => import('components/Docs'));
 
 const client = new ApolloClient({
@@ -28,6 +28,7 @@ export default function MainPage() {
   const [request, setRequest] = useState<RequestType>({});
   const [user, userLoading] = useAuthState(auth);
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (!userLoading && !user) {
@@ -39,7 +40,7 @@ export default function MainPage() {
     try {
       setRequest({ query, variables: JSON.parse(variables || '') });
     } catch (err) {
-      console.error(err);
+      setShowModal(true);
     }
   };
 
@@ -70,6 +71,9 @@ export default function MainPage() {
           </div>
         </QueryProvider>
       </ApolloProvider>
+      {showModal && (
+        <Modal message="Variables must be in JSON-format!" onClose={() => setShowModal(false)} />
+      )}
     </>
   );
 }

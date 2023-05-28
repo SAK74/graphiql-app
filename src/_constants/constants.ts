@@ -7,7 +7,7 @@ import SergijPic from '../assets/Sergij.jpeg';
 import { Dev } from '../types/types';
 
 export const techs = [
-  'React.js',
+  'React.JS',
   'GraphQL',
   'Tailwind CSS',
   'Firebase',
